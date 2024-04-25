@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Weather Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .message {
+            margin-bottom: 20px;
+            animation: slideInTop 1s ease-out;
+        }
+        @keyframes slideInTop {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        form {
+            animation: zoomIn 1s ease-out;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Weather animation */
+        .weather-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: linear-gradient(to bottom, #87CEEB, #1E90FF);
+            animation: moveWeather 20s linear infinite;
+        }
+
+        @keyframes moveWeather {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 1000px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Weather animation background -->
+    <div class="weather-background"></div>
+
+    <div class="container">
+        <p class="message">Welcome to Weather Prediction!</p>
+        <form action="/predict" method="post">
+            <label for="precipitation">Precipitation:</label>
+            <input type="text" id="precipitation" name="precipitation" placeholder="Enter precipitation value"><br>
+            <label for="temp_max">Maximum Temperature:</label>
+            <input type="text" id="temp_max" name="temp_max" placeholder="Enter maximum temperature"><br>
+            <label for="temp_min">Minimum Temperature:</label>
+            <input type="text" id="temp_min" name="temp_min" placeholder="Enter minimum temperature"><br>
+            <label for="wind">Wind:</label>
+            <input type="text" id="wind" name="wind" placeholder="Enter wind value"><br>
+            <button type="submit">Predict Weather</button>
+        </form>
+    </div>
+</body>
+</html>
